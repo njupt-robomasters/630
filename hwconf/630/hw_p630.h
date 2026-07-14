@@ -23,7 +23,7 @@
 #define HW_MINOR				2
 
 #define CURRENT_AMP_GAIN		20.0
-#define CURRENT_SHUNT_RES		0.002
+#define CURRENT_SHUNT_RES		0.001
 
 // LED Macros
 #define LED_GREEN_ON()			palClearPad(GPIOB, 0)

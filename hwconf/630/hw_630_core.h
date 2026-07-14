@@ -150,9 +150,9 @@
 #define HW_ICU_PIN				6
 
 // Setting limits
-#define HW_LIM_CURRENT			-40.0, 40.0
-#define HW_LIM_CURRENT_IN		-40.0, 40.0
-#define HW_LIM_CURRENT_ABS		0.0, 40.0
+#define HW_LIM_CURRENT			-120.0, 120.0
+#define HW_LIM_CURRENT_IN		-120.0, 120.0
+#define HW_LIM_CURRENT_ABS		0.0, 160.0
 #define HW_LIM_VIN				6.0, 57.0
 #define HW_LIM_ERPM				-1e6, 1e6
 #define HW_LIM_DUTY_MIN			0.0, 0.1
@@ -163,9 +163,9 @@
 // Limits
 #define MCCONF_L_CURRENT_MAX			20.0	// Current limit in Amperes (Upper)
 #define MCCONF_L_CURRENT_MIN			-20.0	// Current limit in Amperes (Lower)
-#define MCCONF_L_IN_CURRENT_MAX			30.0	// Input current limit in Amperes (Upper)
-#define MCCONF_L_IN_CURRENT_MIN			-30.0	// Input current limit in Amperes (Lower)
-#define MCCONF_L_MAX_ABS_CURRENT		30.0	// The maximum absolute current above which a fault is generated
+#define MCCONF_L_IN_CURRENT_MAX			20.0	// Input current limit in Amperes (Upper)
+#define MCCONF_L_IN_CURRENT_MIN			-20.0	// Input current limit in Amperes (Lower)
+#define MCCONF_L_MAX_ABS_CURRENT		80.0	// The maximum absolute current above which a fault is generated
 #define MCCONF_L_RPM_MAX				1e6	// The motor speed limit (Upper)
 #define MCCONF_L_RPM_MIN				-1e6	// The motor speed limit (Lower)
 // Sensors
@@ -184,7 +184,7 @@
 #define MCCONF_FOC_CURRENT_KI			194.0
 #define MCCONF_FOC_OBSERVER_GAIN		4.4444e+08		// Can be something like 600 / L
 #define MCCONF_FOC_ENCODER_RATIO		1.0
-#define MCCONF_FOC_HFI_AMB_CURRENT		30.0 // HFI ambiguity resolution current
+#define MCCONF_FOC_HFI_AMB_CURRENT		20.0 // HFI ambiguity resolution current
 #define MCCONF_FOC_OFFSETS_CAL_MODE		4 // Offset calibration mode
 #define MCCONF_FOC_F_ZV					30000.0
 // Speed PID parameters
