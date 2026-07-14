@@ -20,10 +20,16 @@
 
 #define HW_NAME					"P630"
 #define HW_MAJOR				0
-#define HW_MINOR				1
+#define HW_MINOR				2
 
 #define CURRENT_AMP_GAIN		20.0
-#define CURRENT_SHUNT_RES		0.001
+#define CURRENT_SHUNT_RES		0.002
+
+// LED Macros
+#define LED_GREEN_ON()			palClearPad(GPIOB, 0)
+#define LED_GREEN_OFF()			palSetPad(GPIOB, 0)
+#define LED_RED_ON()			palClearPad(GPIOB, 1)
+#define LED_RED_OFF()			palSetPad(GPIOB, 1)
 
 #include "hw_630_core.h"
 

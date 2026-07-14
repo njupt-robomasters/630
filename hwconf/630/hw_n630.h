@@ -25,6 +25,12 @@
 #define CURRENT_AMP_GAIN		50.0
 #define CURRENT_SHUNT_RES		0.001
 
+// LED Macros
+#define LED_GREEN_ON()			palSetPad(GPIOB, 0)
+#define LED_GREEN_OFF()			palClearPad(GPIOB, 0)
+#define LED_RED_ON()			palSetPad(GPIOB, 1)
+#define LED_RED_OFF()			palClearPad(GPIOB, 1)
+
 #define HW_HAS_DRV8301
 // SPI for DRV8301
 #define DRV8301_MOSI_GPIO		GPIOC

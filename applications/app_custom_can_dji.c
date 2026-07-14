@@ -149,7 +149,9 @@ static void send_status(void) {
 			CAN_DJI_CURRENT_SCALE_RAW / CAN_DJI_CURRENT_SCALE_A);
 	utils_truncate_number_int(&current_raw, -32768, 32767);
 
-	int temp = (int)mc_interface_temp_motor_filtered();
+	float temp_motor = mc_interface_temp_motor_filtered();
+	float temp_mos = mc_interface_temp_fet_filtered();
+	int temp = (int)(temp_mos > temp_motor ? temp_mos : temp_motor);
 	utils_truncate_number_int(&temp, -128, 127);
 
 	uint8_t buffer[8];
