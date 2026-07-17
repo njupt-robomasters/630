@@ -1247,32 +1247,34 @@ __attribute__((section(".text2"))) int conf_general_measure_flux_linkage_openloo
 
 			if (enc_travel >= travel_for_ratio) {
 				float ratio = roundf(SIGN(enc_ratio_sum) * enc_ratio_sum / enc_samples);
-				bool inverted = enc_ratio_sum < 0.0;
+				if (ratio >= 1.0f) {
+					bool inverted = enc_ratio_sum < 0.0;
 
-				float phase_tmp = encoder_read_deg();
-				if (inverted) {
-					phase_tmp = 360.0 - phase_tmp;
-				}
-				phase_tmp *= ratio;
-
-				float s, c;
-				sincosf(DEG2RAD_f(utils_angle_difference(phase_tmp, phase_bemf)), &s, &c);
-				enc_diff_sin += s;
-				enc_diff_cos += c;
-
-				if (enc_travel >= (360.0 + travel_for_ratio) && !enc_res_set) {
-					if (enc_offset) {
-						*enc_offset = RAD2DEG_f(atan2f(enc_diff_sin, enc_diff_cos));
-						utils_norm_angle(enc_offset);
+					float phase_tmp = encoder_read_deg();
+					if (inverted) {
+						phase_tmp = 360.0 - phase_tmp;
 					}
-					if (enc_ratio) {
-						*enc_ratio = ratio;
-					}
-					if (enc_inverted) {
-						*enc_inverted = inverted;
-					}
+					phase_tmp *= ratio;
 
-					enc_res_set = true;
+					float s, c;
+					sincosf(DEG2RAD_f(utils_angle_difference(phase_tmp, phase_bemf)), &s, &c);
+					enc_diff_sin += s;
+					enc_diff_cos += c;
+
+					if (enc_travel >= (360.0 + travel_for_ratio) && !enc_res_set) {
+						if (enc_offset) {
+							*enc_offset = RAD2DEG_f(atan2f(enc_diff_sin, enc_diff_cos));
+							utils_norm_angle(enc_offset);
+						}
+						if (enc_ratio) {
+							*enc_ratio = ratio;
+						}
+						if (enc_inverted) {
+							*enc_inverted = inverted;
+						}
+
+						enc_res_set = true;
+					}
 				}
 			}
 
